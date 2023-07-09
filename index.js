@@ -6,17 +6,18 @@ const BooksInfo = require('./models/BooksInfo');
 const multer = require('multer');
 // creating express instance
 const app = express();
+// mongoDB connection string
+const dbURL = "";
+
+// Method (.connect) connect to the database using the URL and asyc methods
+mongoDB.connect(dbURL,{ useNewUrlParser: true, useUnifiedTopology: true })
+    .then((result) => app.listen(4000,() => console.log("Server running on port:4000")))
+    .catch((err) => console.log(err));
+
 const upload = multer({ dest: "uploads/" })
 // middleware
 app.use(express.urlencoded({ extended : true }));
 app.use(express.json());
-// MongoDb connection string
-const URL = 'mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false';
-
-// Method (.connect) connect to the database using the URL and asyc methods
-mongoDB.connect(URL,{ useNewUrlParser: true, useUnifiedTopology: true })
-    .then((result) => app.listen(4000,() => console.log("Server running on port:4000")))
-    .catch((err) => console.log(err));
 
 // GET Request 
 app.get('/api/', (req, res) => {
