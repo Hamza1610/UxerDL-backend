@@ -7,7 +7,7 @@ const multer = require('multer');
 // creating express instance
 const app = express();
 // mongoDB connection string
-const dbURL = "";
+const dbURL = "mongodb+srv://mhn:162003@cluster0.cfz3v.mongodb.net/?retryWrites=true&w=majority";
 
 // Method (.connect) connect to the database using the URL and asyc methods
 mongoDB.connect(dbURL,{ useNewUrlParser: true, useUnifiedTopology: true })
